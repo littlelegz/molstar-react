@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 import { DefaultPluginSpec } from "molstar/lib/mol-plugin/spec";
 import { DefaultPluginUISpec } from "molstar/lib/mol-plugin-ui/spec";
-import { createPluginAsync } from "molstar/lib/mol-plugin-ui/index";
+import { createPluginUI } from "molstar/lib/mol-plugin-ui/index";
 import { PluginContext } from "molstar/lib/mol-plugin/context";
 import "molstar/build/viewer/molstar.css";
 import { ParamDefinition } from "molstar/lib/mol-util/param-definition";
@@ -27,7 +27,7 @@ const Molstar = props => {
             showControls,
           }
         };
-        plugin.current = await createPluginAsync(parentRef.current, spec);
+        plugin.current = await createPluginUI(parentRef.current, spec);
       } else {
         plugin.current = new PluginContext(DefaultPluginSpec());
         plugin.current.initViewer(canvasRef.current, parentRef.current);
